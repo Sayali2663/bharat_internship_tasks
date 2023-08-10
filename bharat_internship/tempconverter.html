@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        * {
+            font-size: 40px;
+        }
+        
+        body {
+            background-image: url('cold.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .converter-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter-container">
+        <h1>Temperature Converter</h1>
+        <form>
+            <label>Temperature in Celsius</label><br>
+            <input type="number" step="any" id="cel"><br><br>
+            
+            <label>Temperature in Fahrenheit</label><br>
+            <input type="number" step="any" id="fah"><br>
+        </form>
+    </div>
+    <script>
+        let cel = document.getElementById("cel");
+        let fah = document.getElementById("fah");
+        
+        cel.addEventListener("input", function() {
+            let c = parseFloat(cel.value);
+            let f = (c * 9 / 5) + 32;
+            fah.value = f.toFixed(2);
+        });
+        
+        fah.addEventListener("input", function() {
+            let f = parseFloat(fah.value);
+            let c = (f - 32) * 5 / 9;
+            cel.value = c.toFixed(2);
+        });
+    </script>
+</body>
+</html>
